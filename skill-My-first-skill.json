@@ -1,0 +1,355 @@
+{
+  "name": "My first skill",
+  "intents": [
+    {
+      "intent": "post",
+      "examples": [
+        {
+          "text": "sim"
+        },
+        {
+          "text": "Want to know a post"
+        },
+        {
+          "text": "post?"
+        },
+        {
+          "text": "Want a post"
+        },
+        {
+          "text": "post"
+        },
+        {
+          "text": "What post?"
+        },
+        {
+          "text": "What post"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "what-issue",
+      "examples": [
+        {
+          "text": "Want to know a issue"
+        },
+        {
+          "text": "issue"
+        },
+        {
+          "text": "Want a issue"
+        },
+        {
+          "text": "What issue"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "combo",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "yes",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "sim",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "id",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "1256767",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1256746",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1256769",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1256790",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "id",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "YES",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Yes",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Ok",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "nao",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "no, obrigado",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "regiao",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "LAA",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "NAA",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Service",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Service",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "issues",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "issues",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Service",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Price",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Customer Service",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "ab45f270-b5aa-40fb-9bd8-0c55050bacb4",
+  "dialog_nodes": [
+    {
+      "type": "slot",
+      "parent": "node_9_1575303350478",
+      "variable": "$post",
+      "dialog_node": "slot_9_1575303675435",
+      "previous_sibling": "handler_1_1575303674783"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_9_1575303350478",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1575303674783"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Let me know your region please"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1575524034865",
+      "conditions": "@combo",
+      "dialog_node": "node_2_1575524656509"
+    },
+    {
+      "type": "frame",
+      "parent": "Welcome",
+      "dialog_node": "node_9_1575303350478"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "\nThank you very much. An audit thanks"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1575524974308",
+      "conditions": "@nao",
+      "dialog_node": "node_10_1575525346508"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1575303675435",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1575303675446",
+      "previous_sibling": "handler_9_1575303675446"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_9_1575303675435",
+      "context": {
+        "post": "#post"
+      },
+      "conditions": "#post",
+      "event_name": "input",
+      "dialog_node": "handler_9_1575303675446"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "We have found that for your region you have a 50% discount. So that you remain our customer.  Can I help you with anything else?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1575524656509",
+      "conditions": "@regiao",
+      "dialog_node": "node_10_1575524974308"
+    },
+    {
+      "type": "standard",
+      "title": "Question you id user",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "We found from our base that you did not have a good experience for this. We will offer some promotions. Do you want to participate?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@id",
+      "dialog_node": "node_9_1575524034865",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi! My name is Audit, virtual assistant, so I can help you, tell me your id? please"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "ab45f270-b5aa-40fb-9bd8-0c55050bacb4",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": ""
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
